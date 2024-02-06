@@ -4,6 +4,11 @@ import { usePathname } from "next/navigation"
 import * as React from "react"
 
 import {
+  Button,
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
   Icon,
   NavigationMenu,
   NavigationMenuItem,
@@ -11,6 +16,8 @@ import {
   NavigationMenuList,
   navigationMenuTriggerStyle,
 } from "@/components/ui"
+import { getCountryFlag } from "@/utils"
+import Image from "next/image"
 
 const links = [
   { href: "/", name: "Home" },
@@ -43,9 +50,33 @@ const Topbar = () => {
             ))}
           </NavigationMenuList>
         </NavigationMenu>
-        <div className="flex items-center gap-2 ml-auto">
-          <Icon name="phone-call" />
-          <span className="text-sm font-medium">+123 456 7890</span>
+        <div className="flex gap-6 ml-auto">
+          <div className="flex items-center gap-2">
+            <Icon name="phone-call" />
+            <span className="text-sm font-medium">+123 456 7890</span>
+          </div>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <div className="flex items-center gap-2 cursor-pointer">
+                <Image src={getCountryFlag("US")} alt="flag" width={20} height={20} />
+                English
+              </div>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent className="w-56">
+              <DropdownMenuItem>
+                <div className="flex items-center gap-2 cursor-pointer">
+                  <Image src={getCountryFlag("US")} alt="flag" width={20} height={20} />
+                  English
+                </div>
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                <div className="flex items-center gap-2 cursor-pointer">
+                  <Image src={getCountryFlag("BD")} alt="flag" width={20} height={20} />
+                  Bangla
+                </div>
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
         </div>
       </div>
     </div>
