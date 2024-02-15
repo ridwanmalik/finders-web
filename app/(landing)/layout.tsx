@@ -1,10 +1,10 @@
 import { ReactNode } from "react"
-import Navbar from "./_components/navbar"
+import Header from "./_components/header"
 
 const LandingLayout = ({ children }: { children: ReactNode }) => {
   return (
     <div>
-      <Navbar />
+      <Header />
       {children}
     </div>
   )
